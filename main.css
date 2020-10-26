@@ -1,0 +1,53 @@
+.game {
+
+    font-family: "akbar";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#start-button {
+    font-family: "akbar";
+}
+
+.game h1{
+    border: 3px solid yellow;
+    background-image: url("./images/cloud.jpg");
+    background-size: contain;
+    text-shadow: -2px 3px black, -3px 3px black;
+    color: #ffdb4d;
+    padding: 30px;
+    width: 500px;
+    
+}
+.game p{
+    font-size: 14px;
+    border: 3px solid yellow;
+    background-image: url("./images/cloud.jpg");
+    background-size: cover;
+    text-shadow: -2px 3px black, -3px 3px black;
+    color: #ffdb4d;
+    padding: 14px;
+    width: 338px;
+    text-shadow: -1px 2px black, -1px 1px black;
+}
+
+#start-button{
+    border: 4px solid yellow;
+    color: #ffdb4d;
+    background-image: url("./images/cloud.jpg");
+    text-shadow: -1px 2px black, -1px 1px black;
+    padding: 5px 13px;
+}
+
+#score-div p{
+width: 78px;
+}
+
+#house-image{
+    background-image: url("../jogo/images/house.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 20px 0px;
+}
