@@ -1,9 +1,9 @@
 class Lady {
     constructor() {
         this.x=220;
-        this.y=190;
+        this.y=230;
         this.width=70;
-        this.height=100;
+        this.height=120;
         this.img="./images/spritesheet.png";
     }
 
