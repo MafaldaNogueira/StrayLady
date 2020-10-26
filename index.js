@@ -27,18 +27,25 @@ function startGame() {
 
 }
 
-function detectCollision(cat) {
-    return newLady.y < cat.y && newLady.x + newLady.width < cat.x
-}
-// function detectCollision(cat) {
-//     return ((newLady.y > cat.y + cat.height) || 
-//     (newLady.x + newLady.width < cat.x) || 
-//     (newLady.x - newLady.width  > cat.x + cat.width))
-// }
+/*function detectCollision(cat) {
+   if(cat.x + cat.width > newLady.x &&
+    cat.x < newLady.x + newLady.width &&
+    cat.y + cat.height > newLady.y - 30 &&
+    cat.y + 100 < newLady.y + newLady.height){
+    newGame.score +=1
+    }
+}*/
+
+ function detectCollision(cat) {
+     return !((newLady.y > cat.y + cat.height) || 
+     (newLady.x + newLady.width < cat.x) 
+     || 
+     (newLady.x  > cat.x + cat.width))
+ }
 let catsFrequency=0;
 
 function updateCanvas () {
-    ctx.clearRect(0, 0, 500, 600);
+    ctx.clearRect(0, 0, 600, 700);
     newGame.lady.drawLady();
     catsFrequency++;
     if(catsFrequency % 120===0){
@@ -52,9 +59,12 @@ function updateCanvas () {
         newGame.cats[i].y++;
         newGame.cats[i].drawObstacle();
         if (detectCollision(newGame.cats[i])) { 
-            console.log('gato')
-            // newGame.score = 10;
-            // document.getElementById('score').innerHTML = 10;
+            console.log("apanhei um gato!", i);
+            newGame.cats.splice(i, 1);
+            newGame.score++;
+            document.getElementById('score').innerHTML = newGame.score;
+            continue;
+            
             // newGame.cats = [newGame.score];
         }
     }

@@ -1,9 +1,9 @@
 class Lady {
     constructor() {
         this.x=220;
-        this.y=150;
-        this.width=60;
-        this.height=90;
+        this.y=190;
+        this.width=70;
+        this.height=100;
         this.img="./images/spritesheet.png";
     }
 
@@ -22,10 +22,14 @@ class Lady {
         ctx.clearRect(this.x, this.y, this.width, this.height);
         switch(keyCode){
           case 37:
-            this.x -= 5;
+            if(this.x >0){
+            this.x -= 15;
+            }
             break;
           case 39:
-            this.x += 5;
+            if(this.x < 500){
+            this.x += 15;
+            }
             break;
         }
       }

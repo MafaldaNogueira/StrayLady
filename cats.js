@@ -2,9 +2,9 @@ class Cats {
     constructor(x) {
         this.x=x;
         this.y=0;
-        this.width=60;
-        this.height=90;
-        this.img="./images/css_sprites (1).png";
+        this.width=40;
+        this.height=70;
+        this.img="./images/cat.png";
     }
 drawObstacle() {
     const catImg = new Image();
