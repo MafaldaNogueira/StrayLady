@@ -8,22 +8,27 @@
     <title>The Cat Lady</title>
 </head>
 <body>
+
 <div class="game">
         <h1> Welcome to the Lady's playground</h1>
-        <p>  Are you ready to catch some strays? </p>
+        <p class="strays">  Are you ready to catch some strays? </p>
 
-    <div class="start-score">
-        <button id="start-button">StartGame</button>
-        <div id="score-div">
-            <p>Score: <span id="score">0</span></p>
-       </div>
-      
- 
+        <div id="timer"> time <span id="time"> 30</span></div>
+
+        <div class="start-score">
+            <button id="start-button">StartGame</button>
+            <div id="score-div">
+                <p>Score: <span id="score">0</span></p>
+           </div>
+          
 </div>
+
+
 
     <div id="house-image">
         <canvas id="canvas" width="700" height="360"></canvas>
     </div>
+
 
     <script src="lady.js"></script>
     <script src="cats.js"></script>

@@ -1,15 +1,23 @@
 let newGame;
 let newLady;
+let clock = 30;
+let song = new Audio ("/audio/song.mp3");
+
 
 document.getElementById('house-image').style.display = 'none';
+document.getElementById('score-div').style.display = 'none';
+document.getElementById('timer').style.display = 'none';
+let time = document.getElementById('time');
+
+
 
 const myCanvas = document.getElementById('canvas');
 const ctx = myCanvas.getContext('2d');
 
 document.getElementById('start-button').onclick = () => {
     startGame();
+    printSeconds();
 }
-
 
 
 document.onkeydown = (e) => {
@@ -17,24 +25,38 @@ document.onkeydown = (e) => {
     newGame.lady.moveLady(whereToGo);
 }
 
+
+
 function startGame() {
+  
     document.getElementById('house-image').style.display = 'block';
+    document.getElementById('score-div').style.display = 'block';
+    document.getElementById('timer').style.display = 'block';
     newGame = new Game();
     newLady = new Lady();
     newGame.lady = newLady;
     newGame.lady.drawLady();
+    song.play();
     updateCanvas();
+   console.log(song);
+}
+function printTime(){
+    printSeconds();
+}
+
+function printSeconds(){
+    let intervalId = setInterval(() => {   
+        clock -= 1;  
+        time.innerHTML = clock;
+        if (clock === 0) {
+            clearInterval(intervalId);
+            return alert("GAME OVER");
+        }
+    }, 1000);
 
 }
 
-/*function detectCollision(cat) {
-   if(cat.x + cat.width > newLady.x &&
-    cat.x < newLady.x + newLady.width &&
-    cat.y + cat.height > newLady.y - 30 &&
-    cat.y + 100 < newLady.y + newLady.height){
-    newGame.score +=1
-    }
-}*/
+
 
  function detectCollision(cat) {
      return !((newLady.y > cat.y + cat.height) || 
@@ -42,8 +64,12 @@ function startGame() {
      || 
      (newLady.x  > cat.x + cat.width))
  }
-let catsFrequency=0;
 
+
+
+
+
+let catsFrequency=0;
 function updateCanvas () {
     ctx.clearRect(0, 0, 600, 700);
     newGame.lady.drawLady();
@@ -64,8 +90,7 @@ function updateCanvas () {
             newGame.score++;
             document.getElementById('score').innerHTML = newGame.score;
             continue;
-            
-            // newGame.cats = [newGame.score];
+           
         }
     }
     requestAnimationFrame(updateCanvas);
