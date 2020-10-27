@@ -7,6 +7,18 @@
     text-align: center;
 }
 
+.game img{
+    margin-top: 50px;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+}
+
+.game .falling{
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 80px;
+}
 
 .game h1{
     border: 3px solid yellow;
@@ -40,6 +52,7 @@
     text-shadow: -1px 2px black, -1px 1px black;
     font-size: 19px;
     padding: 5px 13px;
+    margin-bottom: 15px;
 }
 
 #start-button:hover{
@@ -66,7 +79,7 @@
     background-image: url("./images/house.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 20px 0px;
+    padding-top: 20px;
 
 }
 
@@ -78,9 +91,9 @@
     text-shadow: -1px 2px black, -1px 1px black;
     color: #ffdb4d;
     background-color: #57ceff;
-    padding: 13px 20px;
+    padding: 13px 23px;
     position: absolute;
-    margin-top: 327px;
+    margin-top: 342px;
     margin-left: 586px;
 
 }

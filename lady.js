@@ -1,9 +1,9 @@
 class Lady {
     constructor() {
         this.x=220;
-        this.y=230;
-        this.width=70;
-        this.height=120;
+        this.y=300;
+        this.width=75;
+        this.height=150;
         this.img="./images/spritesheet.png";
     }
 
@@ -27,7 +27,7 @@ class Lady {
             }
             break;
           case 39:
-            if(this.x < 500){
+            if(this.x < 800){
             this.x += 15;
             }
             break;
