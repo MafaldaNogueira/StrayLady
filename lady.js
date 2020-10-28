@@ -8,14 +8,22 @@ class Lady {
         this.vy=2;
         this.userPull= 0;
         this.gravity =  0.3;
-        this.img="./images/spritesheet.png";
+        this.image = new Image()
+        this.direction = 'left';
     }
 
     drawLady(){
-        const ladyImg = new Image();
-        ladyImg.src = this.img;
 
-          ctx.drawImage(ladyImg, this.x, this.y, this.width, this.height);
+      let lady = this.image
+      if(this.direction === 'left') {
+        lady.src = 'images/ladyback.png'
+      } else if(this.direction === 'right') {
+        lady.src = 'images/spritesheet.png'
+      }
+      
+      ctx.drawImage(lady, this.x, this.y, this.width, this.height);
+
+  
     }
 
     jumpLady(){
@@ -34,16 +42,20 @@ class Lady {
       }
     }
 
+
+
     moveLady(keyCode){
 
         ctx.clearRect(this.x, this.y, this.width, this.height);
         switch(keyCode){
           case 37:
+            this.direction = "left";
             if(this.x >0){
             this.x -= 25;
             }
             break;
           case 39:
+            this.direction = "right";
             if(this.x < 800){
             this.x += 25;
             }
