@@ -23,7 +23,6 @@ class Lady {
       
       ctx.drawImage(lady, this.x, this.y, this.width, this.height);
 
-  
     }
 
     jumpLady(){

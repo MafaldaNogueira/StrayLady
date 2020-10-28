@@ -33,15 +33,16 @@
     
 }
 .game .strays{
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 25px;
     border: 3px solid yellow;
-    background-image: url("./images/cloud-back.gif");
-    background-size: auto;
+    background-image: url(./images/cloud-back.gif);
+    background-size: cover;
     text-shadow: -2px 3px black, -3px 3px black;
     color: #ffdb4d;
     padding: 14px;
-    width: 450px;
-    text-shadow: -1px 2px black, -1px 1px black;
+    width: 511px;
+    text-shadow: -2px 3px black, -2px 2px black;
 }
 
 #start-button{
@@ -93,7 +94,7 @@
     background-color: #57ceff;
     padding: 13px 23px;
     position: absolute;
-    margin-top: 342px;
+    margin-top: 427px;
     margin-left: 586px;
 
 }
