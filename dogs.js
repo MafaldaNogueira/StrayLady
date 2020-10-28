@@ -2,8 +2,8 @@ class Dogs {
     constructor(x) {
         this.x=x;
         this.y=0;
-        this.width=50;
-        this.height=60;
+        this.width=60;
+        this.height=70;
         this.img="./images/dog.png";
     }
 drawObstacle() {

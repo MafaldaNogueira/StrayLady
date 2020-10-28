@@ -1,9 +1,9 @@
 class Carts {
-    constructor(x) {
-        this.x=x;
-        this.y=0;
-        this.width=50;
-        this.height=60;
+    constructor() {
+        this.x=900;
+        this.y=390;
+        this.width=55;
+        this.height=65;
         this.img="./images/cart.png";
     }
 drawObstacle() {

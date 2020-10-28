@@ -1,6 +1,8 @@
 let newGame;
 let newLady;
 
+
+
 let clock = 30;
 let song = new Audio ("/audio/song.mp3");
 
@@ -21,10 +23,7 @@ document.getElementById('start-button').onclick = () => {
 }
 
 
-document.onkeydown = (e) => {
-    let whereToGo = e.keyCode;
-    newGame.lady.moveLady(whereToGo);
-}
+
 
 
 
@@ -34,14 +33,24 @@ function startGame() {
     document.getElementById('score-div').style.display = 'block';
     document.getElementById('timer').style.display = 'block';
     newGame = new Game();
-    newLady = new Lady();
+    newLady = new Lady(220, 300);
 
     newGame.lady = newLady;
     newGame.lady.drawLady();
 
-    song.play();
+//    song.play();
     updateCanvas();
-  
+    document.onkeydown = (e) => {
+        e.preventDefault()
+        let whereToGo = e.keyCode;
+        newGame.lady.moveLady(whereToGo);
+    }
+    
+    document.onkeyup = (e) => {
+        if(e.keyCode === 38) {
+            newGame.lady.userPull=0;
+        }
+    }
 }
 function printTime(){
     printSeconds();
@@ -80,8 +89,11 @@ function detectCollision(cart){
     return !((newLady.y > cart.y + cart.height) || 
     (newLady.x + newLady.width < cart.x) 
     || 
-    (newLady.x  > cart.x + cart.width))
+    (newLady.x  > cart.x + cart.width) ||
+    (newLady.y + newLady.height < cart.y))
 }
+
+
 
 
 
@@ -90,6 +102,12 @@ let catsFrequency=0;
 let cartsFrequency=0;
 function updateCanvas () {
     ctx.clearRect(0, 0, 900, 450);
+    newGame.lady.jumpLady();
+    newGame.lady.topLady();
+    
+    newGame.lady.vy = newGame.lady.vy + (newGame.lady.gravity - newGame.lady.userPull);
+    newGame.lady.y += newGame.lady.vy; 
+    
     newGame.lady.drawLady();
     catsFrequency++;
     dogsFrequency++;
@@ -99,13 +117,14 @@ function updateCanvas () {
         let newCat = new Cats(randomCatX);
         newGame.cats.push(newCat);
     }
+// 60 % 5 - todos os segundos
 
-    if(dogsFrequency % 190===1){
+    if(dogsFrequency % 150===0){
         let randomDogX = Math.floor(Math.random() * 450);
         let newDog = new Dogs(randomDogX);
         newGame.dogs.push(newDog);
     }
-    if(cartsFrequency % 120===0){
+    if(cartsFrequency % 300 === 0){
         let randomCartX = Math.floor(Math.random() * 450);
         let newCart = new Carts(randomCartX);
         newGame.carts.push(newCart);
@@ -137,7 +156,7 @@ function updateCanvas () {
     }
 
     for(let i = 0; i<newGame.carts.length; i++) {
-        newGame.carts[i].y++;
+        newGame.carts[i].x--;
         newGame.carts[i].drawObstacle();
         if (detectCollision(newGame.carts[i])) { 
             newGame.carts.splice(i, 1);

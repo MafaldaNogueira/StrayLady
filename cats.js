@@ -2,8 +2,8 @@ class Cats {
     constructor(x) {
         this.x=x;
         this.y=0;
-        this.width=70;
-        this.height=60;
+        this.width=90;
+        this.height=80;
         this.img="./images/cat.png";
     }
 drawObstacle() {
