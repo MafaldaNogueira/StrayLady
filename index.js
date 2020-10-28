@@ -3,8 +3,9 @@ let newLady;
 
 
 
-let clock = 30;
-let song = new Audio ("/audio/song.mp3");
+let clock = 7;
+let song = new Audio ("./audio/song.mp3");
+let scream = new Audio ("./audio/CAT LADY - SCREAM 1.mp3");
 
 
 document.getElementById('house-image').style.display = 'none';
@@ -30,6 +31,7 @@ function resetGame(){
     document.getElementById('score-div').style.display = 'none';
     document.getElementById('timer').style.display = 'none';
     document.getElementById('gameOver').style.display = 'block';
+    scream.play();
 }
 
 
@@ -44,7 +46,7 @@ function startGame() {
     newGame.lady = newLady;
     newGame.lady.drawLady();
 
-  song.play();
+    song.play();
     updateCanvas();
     document.onkeydown = (e) => {
         e.preventDefault()
@@ -69,6 +71,8 @@ function printSeconds(){
         if (clock === 0) {
             clearInterval(intervalId);
             resetGame();
+            song.pause();
+            scream.play();
         }
     }, 1000);
 }
