@@ -10,6 +10,7 @@ let song = new Audio ("/audio/song.mp3");
 document.getElementById('house-image').style.display = 'none';
 document.getElementById('score-div').style.display = 'none';
 document.getElementById('timer').style.display = 'none';
+document.getElementById('gameOver').style.display = 'none';
 let time = document.getElementById('time');
 
 
@@ -24,7 +25,12 @@ document.getElementById('start-button').onclick = () => {
 
 
 
-
+function resetGame(){
+    document.getElementById('house-image').style.display = 'none';
+    document.getElementById('score-div').style.display = 'none';
+    document.getElementById('timer').style.display = 'none';
+    document.getElementById('gameOver').style.display = 'block';
+}
 
 
 function startGame() {
@@ -38,7 +44,7 @@ function startGame() {
     newGame.lady = newLady;
     newGame.lady.drawLady();
 
-//    song.play();
+  song.play();
     updateCanvas();
     document.onkeydown = (e) => {
         e.preventDefault()
@@ -57,17 +63,15 @@ function printTime(){
 }
 
 function printSeconds(){
-    let intervalId = setInterval(() => {   
-        clock -= 1;  
+    let intervalId = setInterval(() => {
+        clock -= 1;
         time.innerHTML = clock;
         if (clock === 0) {
             clearInterval(intervalId);
-            return alert("GAME OVER");
+            resetGame();
         }
     }, 1000);
-
 }
-
 
 
  function detectCollision(cat) {
@@ -166,8 +170,9 @@ function updateCanvas () {
            
         }
     }
-
-
+   
     requestAnimationFrame(updateCanvas);
+
+
 }
 

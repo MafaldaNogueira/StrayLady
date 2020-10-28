@@ -5,6 +5,5 @@ class Game {
         this.score = 0;
         this.dogs = [];
         this.carts = [];
-        this.gameRunning = true;
     }
 }

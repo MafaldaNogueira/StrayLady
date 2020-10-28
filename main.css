@@ -99,3 +99,18 @@
 }
 
 
+#gifGameOver {
+    width: 579px;
+    height: 400px;
+    position: inherit;
+    margin-right: 19px;
+}
+
+#gameOver p{
+    font-size: 32px;
+    color: white;
+    position: absolute;
+    margin-top: 367px;
+    margin-left: 181px;
+    text-shadow: 1px 3px black, -2px 4px black;
+}
