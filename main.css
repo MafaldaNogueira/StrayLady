@@ -1,8 +1,6 @@
 
-   @font-face{
-    font-family: "akbar";
-    src: url("akbar.ttf");
-   }
+   @import url("https://www.dafont.com/akbar.font");
+
 
 .game {
 
