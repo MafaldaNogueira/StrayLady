@@ -56,6 +56,23 @@
     margin-bottom: 15px;
 }
 
+#restart-button {
+    font-family: "akbar";
+    border: 4px solid yellow;
+    color: #ffdb4d;
+   background-color: #57ceff;
+    text-shadow: -1px 2px black, -1px 1px black;
+    font-size: 19px;
+    padding: 5px 13px;
+    margin-bottom: 15px;
+}
+
+#restart-button:hover{
+    background-color: #ffdb4d;
+    color: #57ceff;
+    border: 4px solid #57ceff;
+}
+
 #start-button:hover{
     background-color: #ffdb4d;
     color: #57ceff;
@@ -71,8 +88,8 @@
     color: #ffdb4d;
     padding: 0px 18px;
     width: 90px;
-    margin-top: 25px;
-    margin-left: 165px;
+    margin-top: 366px;
+    margin-left: 300px;
     text-shadow: -1px 2px black, -1px 1px black;
 }
 
@@ -98,7 +115,18 @@
     margin-left: 586px;
 
 }
-
+#highscorer{
+    border: 3px solid yellow;
+    font-size: 13px;
+    text-shadow: -2px 3px black, -3px 3px black;
+    text-shadow: -1px 2px black, -1px 1px black;
+    color: #ffdb4d;
+    background-color: #57ceff;
+    padding: 13px 23px;
+    position: absolute;
+    margin-top: 366px;
+    margin-right: 9px;
+}
 
 #gifGameOver {
     width: 579px;

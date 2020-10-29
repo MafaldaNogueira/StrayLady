@@ -3,13 +3,15 @@ let newLady;
 
 
 
-let clock = 20;
+let clock = 5;
 let song = new Audio ("./audio/song.mp3");
 let scream = new Audio ("./audio/CAT LADY - SCREAM 1.mp3");
 
 
+document.getElementById('restart-button').style.display = 'none';
 document.getElementById('house-image').style.display = 'none';
 document.getElementById('score-div').style.display = 'none';
+document.getElementById('highscorer').style.display = 'none';
 document.getElementById('timer').style.display = 'none';
 document.getElementById('gameOver').style.display = 'none';
 let time = document.getElementById('time');
@@ -24,14 +26,30 @@ document.getElementById('start-button').onclick = () => {
     printSeconds();   
 }
 
+document.getElementById('restart-button').onclick = () => {
+    resetGame();
+    printSeconds();   
+}
+
 
 
 function resetGame(){
+    document.getElementById('restart-button').style.display = 'block';
+    document.getElementById('gameOver').style.display = 'none';
+    startGame();
+    scream.pause();
+}
+
+function gameOver(){
+    document.getElementById('start-button').style.display='none';
     document.getElementById('house-image').style.display = 'none';
     document.getElementById('score-div').style.display = 'none';
     document.getElementById('timer').style.display = 'none';
     document.getElementById('gameOver').style.display = 'block';
+    document.getElementById('highscorer').style.display = 'none';
+    document.getElementById('restart-button').style.display = 'block';
     scream.play();
+     clock = 30;
 }
 
 
@@ -40,6 +58,7 @@ function startGame() {
     document.getElementById('house-image').style.display = 'block';
     document.getElementById('score-div').style.display = 'block';
     document.getElementById('timer').style.display = 'block';
+    document.getElementById('highscorer').style.display = 'block';
     newGame = new Game();
     newLady = new Lady(220, 300);
 
@@ -70,8 +89,8 @@ function printSeconds(){
         clock -= 1;
         time.innerHTML = clock;
         if (clock === 0) {
-            clearInterval(intervalId);
-            resetGame();
+            clearInterval(intervalId)
+            gameOver();
             song.pause();
             scream.play();
         }
