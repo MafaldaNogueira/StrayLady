@@ -156,7 +156,7 @@ function updateCanvas () {
     }
 // 60 % 5 - todos os segundos
 
-    if(dogsFrequency % 150===0){
+    if(dogsFrequency % 300===0){
         let randomDogX = Math.floor(Math.random() * 450);
         let newDog = new Dogs(randomDogX);
         newGame.dogs.push(newDog);
