@@ -1,3 +1,9 @@
+
+   @font-face{
+    font-family: "akbar";
+    src: url("akbar.ttf");
+   }
+
 .game {
 
     font-family: "akbar";
