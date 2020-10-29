@@ -3,7 +3,7 @@ let newLady;
 
 
 
-let clock = 5;
+let clock = 30;
 let song = new Audio ("./audio/song.mp3");
 let scream = new Audio ("./audio/CAT LADY - SCREAM 1.mp3");
 
