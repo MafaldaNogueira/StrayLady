@@ -3,7 +3,7 @@ let newLady;
 
 
 
-let clock = 30;
+let clock = 20;
 let song = new Audio ("./audio/song.mp3");
 let scream = new Audio ("./audio/CAT LADY - SCREAM 1.mp3");
 
@@ -13,7 +13,7 @@ document.getElementById('score-div').style.display = 'none';
 document.getElementById('timer').style.display = 'none';
 document.getElementById('gameOver').style.display = 'none';
 let time = document.getElementById('time');
-
+checkHighScore();
 
 
 const myCanvas = document.getElementById('canvas');
@@ -21,7 +21,7 @@ const ctx = myCanvas.getContext('2d');
 
 document.getElementById('start-button').onclick = () => {
     startGame();
-    printSeconds();
+    printSeconds();   
 }
 
 
@@ -48,6 +48,7 @@ function startGame() {
 
     song.play();
     updateCanvas();
+ 
     document.onkeydown = (e) => {
         e.preventDefault()
         let whereToGo = e.keyCode;
@@ -102,7 +103,16 @@ function detectCollision(cart){
 }
 
 
+function setHighScore(score) {
+    let currentHighScore = localStorage.getItem('HighScore');
+    if (score > currentHighScore) {
+        localStorage.setItem('HighScore', score);
+    }
+}
 
+function checkHighScore(){
+    document.getElementById("highscore").innerHTML = localStorage.getItem("HighScore");
+}
 
 
 let dogsFrequency=0;
@@ -146,6 +156,7 @@ function updateCanvas () {
         if (detectCollision(newGame.cats[i])) { 
             newGame.cats.splice(i, 1);
             newGame.score++;
+            setHighScore(newGame.score);
             document.getElementById('score').innerHTML = newGame.score;
             continue;
            
@@ -157,6 +168,7 @@ function updateCanvas () {
         if (detectCollision(newGame.dogs[i])) { 
             newGame.dogs.splice(i, 1);
             newGame.score--;
+            setHighScore(newGame.score);
             document.getElementById('score').innerHTML = newGame.score;
             continue;
            
@@ -169,14 +181,11 @@ function updateCanvas () {
         if (detectCollision(newGame.carts[i])) { 
             newGame.carts.splice(i, 1);
             newGame.score--;
+            setHighScore(newGame.score);
             document.getElementById('score').innerHTML = newGame.score;
             continue;
            
         }
     }
-   
     requestAnimationFrame(updateCanvas);
-
-
 }
-
